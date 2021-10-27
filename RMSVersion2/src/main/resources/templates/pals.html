@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>All Users - RMS</title>
+<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css">
+
+</head>
+<body>
+	<div class="container text-center font-weight-bold">
+		<div><h1>List of All Users</h1>
+		</div>
+		<div class="table-responsive">
+			<table class="table table-striped table-bordered ">
+				<thead class="thead-dark">
+					<tr>
+						<th>Pal ID</th>
+						<th>Fights/Arguments</th>
+						<th>Birthday</th>
+						<th>Dislikes</th>
+						<th>Do you help them</th>
+						<th>Last Contacted</th>
+						<th>Length of Friendship</th>
+						<th>Likes</th>
+						<th>Main point of Connection</th>
+						<th>Name</th>
+						<th>Nick Name</th>
+						<th>Personality Type</th>
+						<th>Picture</th>
+						<th>Profession</th>
+						<th>Reasons for Arguments/Fights</th>
+						<th>Religion</th>
+						<th>Resolution</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="pals:${listAllPals}"> 
+						<td th:text="${}"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		
+	</div>
+</body>
+</html>

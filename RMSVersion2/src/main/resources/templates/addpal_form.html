@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+<title>Feedback - RMS</title>
+<!--  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">-->
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet"> 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet"> 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet"> 
+
+ <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" type="text/css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat&family=Monoton&display=swap" rel="stylesheet"> 
+
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<style>
+	/* Add a black background color to the top navigation */
+.topnav {
+  background-color: #1B3F8B;
+  overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  /*color: #f2f2f2;*/
+  color:#F6F6F6;	
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover 
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+*/
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #3A539B;
+  color: white;
+}
+
+
+.pics{
+
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display:block;
+  padding:0px;
+  background-color:#000000;
+}
+
+.actionLinks
+{
+ display:block;
+ text-align: center;
+ padding:0px;
+}
+
+.container {
+  padding: 2rem 0rem;
+}
+
+h4 {
+  margin: 2rem 0rem 1rem;
+}
+
+/*.table-image {
+  td, th {
+    vertical-align: middle;
+  }
+}*/
+
+
+</style>
+
+</head>
+<body style="background-color:#F6F6F6;">
+
+	<div class="container-fluid text-center">
+	 <div class="topnav">
+	  <a style="color:#F6F6F6;">Welcome!<b> [[${#request.userPrincipal.principal.fullName}]]</b> </a>
+	  <a  th:href="@{/home}">Home</a>
+	  <a class="active" th:href="@{/addaPal}">AddPal</a> 
+	  <a href="#about">Activities</a>
+	  <a href="#about">Observations</a>
+	  <a href="#about">TheDeleted</a>
+ 
+ 	<div style="float:right;">
+ 
+			<form th:action="@{/logout}" method="post"> 
+				 <input type="submit" class="btn" style="background-color:#1B3F8B;padding-top:14px;font-weight:bold;color:#F6F6F6;" value="Logout"/>
+			</form>
+	</div>
+	</div> 
+
+		<div>
+			<h5 class="font-weight-bold" style="padding-top:15px;">Add Pal</h5>
+		</div>
+		<div>
+		
+		
+
+		<form th:action="@{/process_addaPal}" method="post" th:object="${pals}" style="max-width:800px; margin:0 auto;"enctype="multipart/form-data">
+			<div class="m-3">
+				<div class="form-group row">
+					<label class="col-form-label col-3">Name:</label>
+					<div class="col-6">
+						<input type="text" class="form-control" th:field="*{name}" style="width:400px;" required />
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="col-form-label col-3">Nick name:</label>
+					<div class="col-6">
+						<input type="text" class="form-control" th:field="*{nickName}" style="width:400px;" required />
+					</div>
+				</div>
+				
+				<div class="form-group row">
+					<label class="col-form-label col-3">Profession:</label>
+					<div class="col-6">
+						<input type="text" class="form-control" th:field="*{profession}" style="width:400px;" required />
+					</div>
+				</div>
+				
+				<div class="form-group row">
+					<label class="col-form-label col-3">Religion:</label>
+					<div class="col-6">
+						<input type="text" class="form-control" th:field="*{religion}" style="width:400px;" required />
+					</div>
+				</div>
+				
+				<div class="form-group row">
+					<label class="col-form-label col-3">Likes:</label>
+					<div class="col-6">
+					<textarea rows="5" style="width:400px;"  class="form-control" th:field="*{likes}" required ></textarea>
+						
+					</div>
+				</div>
+				
+				<div class="form-group row">
+					<label class="col-form-label col-3">Dislikes:</label>
+					<div class="col-6">
+					<textarea rows="5" style="width:400px;" class="form-control" th:field="*{dislikes}" required ></textarea>
+						
+					</div>
+				</div>
+				
+				<div class="form-group row">
+					<label class="col-form-label col-3">Main point of connection:</label>
+					<div class="col-6">
+					<textarea rows="5" style="width:400px;" class="form-control" th:field="*{mainPOfConnection}" required></textarea>
+						
+					</div>
+				</div>
+				
+				<div class="form-group row">
+					<label class="col-form-label col-3">Length of friendship:</label>
+					<div class="col-6">
+						<input type="text" class="form-control" th:field="*{lenOfFriendship}" style="width:400px;" required />
+					</div>
+				</div>
+				
+				<div class="form-group row">
+					<label class="col-form-label col-3">Arguments or fights:</label>
+					<div class="col-6">
+						<input type="text" class="form-control" th:field="*{argOrFights}" style="width:400px;" required />
+					</div>
+				</div>
+				
+				<div class="form-group row">
+					<label class="col-form-label col-3">Reason:</label>
+					<div class="col-6">
+					<textarea rows="5" style="width:400px;" class="form-control" th:field="*{reasonForArgOrFights}" required ></textarea>
+						
+					</div>
+				</div>
+				
+				<div class="form-group row">
+					<label class="col-form-label col-3">Resolution:</label>
+					<div class="col-6">
+					<textarea rows="5" style="width:400px;" class="form-control" th:field="*{resolution}" required ></textarea>
+						
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="col-form-label col-3">Personality  Type:</label>
+					<div class="col-6">
+						<input type="text" class="form-control" th:field="*{personalityType}" style="width:400px;" required />
+					</div>
+				</div>
+				
+				<div class="form-group row">
+					<label class="col-form-label col-3">Last contacted:</label>
+					<div class="col-6">
+                     <input class="form-control" type="date" th:field="*{lastContacted}" style="width:400px;" id="datepicker2" required/>
+                    
+                    </div>
+					</div>
+				
+				<div class="form-group row">
+					<label class="col-form-label col-3">Birthday:</label>
+					<div class="col-6">
+                     <input class="form-control" type="date" th:field="*{birthday}" style="width:400px;"  id="datepicker2" required/>
+                    
+                    </div>
+				</div>
+				
+				<div class="form-group row">
+					<label class="col-form-label col-3">Do you help them:</label>
+					<div class="col-6">
+					<textarea rows="5" style="width:400px;" class="form-control" th:field="*{doYouHelpThem}" required></textarea>
+					</div>
+				</div>
+				
+				
+					<div class="form-group row">
+					<label class="col-form-label col-3">Picture:</label>
+					<div class="col-6">
+						<input type="file" name="image"  accept="image/png, image/jpeg, image/jpg" />
+					</div>
+				</div>
+				
+				
+				<div><button type="submit" class="btn  text-white" style="background-color:#3A539B;">Save details</button>
+				</div>
+				
+			</div>
+		</form>
+	
+		
+	</div>
+</div>
+</body>
+</html>
+

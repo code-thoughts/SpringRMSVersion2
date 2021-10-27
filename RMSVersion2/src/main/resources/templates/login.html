@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+<title>Login - RMS</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+<style type="text/css">
+#wrapper {
+   width: auto;
+    height: auto;
+    /*box-sizing: border-box;*/
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-columns: repeat(8, 1fr);
+}
+
+#left{
+    text-align: left;
+    grid-column: 4/6;
+}
+
+#right {
+    text-align: left;
+    grid-column: 4/8;
+}
+
+
+
+</style>
+</head>
+<body>
+	<div class="container-fluid text-center">
+			<div  id="wrapper">
+					<div id="left">
+						
+					</div>
+					<div id="right">
+						<img th:src="@{/images/rmsLogo.png}" class="p-1"/>
+					</div>
+			</div>
+			<div th:if="${param.error}">
+				<p class="text-danger">Invalid username or password</p>
+			</div>
+			<form th:action="@{/login}" method="post" style="max-width: 350px;margin:0 auto;">
+				<div class="border border-secondary p-3 rounded">
+					<p>Access the Rms application</p>
+					<p>
+						<input type="email" name="email" class="form-control" placeholder="E-mail" required autofocus />
+					</p>
+					<p>
+						<input type="password" name="password" class="form-control" placeholder="Password" required/>
+					</p>
+					<p>
+						<input type="submit" value="Login" class="btn text-white" style="background-color:#1B3F8B;">
+					</p>
+				</div>
+		</form>
+	</div>
+</body>
+</html>

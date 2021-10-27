@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+<title>Home - RMS</title>
+<!--  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">-->
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet"> 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet"> 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet"> 
+
+ <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" type="text/css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat&family=Monoton&display=swap" rel="stylesheet"> 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Allison&display=swap" rel="stylesheet"> 
+
+
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<style>
+	/* Add a black background color to the top navigation */
+.topnav {
+  /*background-color: #1B3F8B;*/
+  overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  /*color: #f2f2f2;*/
+  color:#F6F6F6;	
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover 
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+*/
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #3A539B;
+  color: white;
+}
+
+
+.pics{
+
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display:block;
+  padding:0px;
+  background-color:#000000;
+}
+.borderCorner
+{
+ border-top-right-radius: 15px;
+ border-top-left-radius: 15px;
+ border-bottom-right-radius: 15px;
+ border-bottom-left-radius: 15px;
+ 
+
+
+}
+
+.actionLinks
+{
+ display:block;
+ text-align: center;
+ padding:0px;
+}
+
+.container {
+  padding: 2rem 0rem;
+}
+
+h4 {
+  margin: 2rem 0rem 1rem;
+}
+
+/*.table-image {
+  td, th {
+    vertical-align: middle;
+  }
+}*/
+
+
+</style>
+
+</head>
+<body style="background-color:#F6F6F6;">
+
+	<div class="container-fluid text-center">
+	 <div class="topnav" style="background-color:#1B3F8B;">
+  <a style="color:#F6F6F6;">Welcome!<b> [[${#request.userPrincipal.principal.fullName}]]</b> </a>
+  <a class="active" th:href="@{/home}">Home</a>
+  <a th:href="@{/addaPal}">AddPal</a>
+  <a th:href="@{/activityList}">Activities</a>
+  <a th:href="@{/notifications}">Observations</a>
+  <a th:href="@{/delFriendsList}">TheDeleted</a>
+ 
+ <div style="float:right;">
+ 
+	<form th:action="@{/logout}" method="post"> 
+		 <input type="submit" class="btn" style="padding-top:14px;font-weight:bold;color:#F6F6F6;background-color:#1B3F8B;" value="Logout"/>
+	</form>
+</div>
+</div> 
+
+		<div>
+			<h3 style="font-family: 'Allison', cursive;color:#22313F; line-height:60px;padding-top:40px;font-size:45px;font-weight:bold;">All Your Pals</h3>
+			<h4 style="line-height:5px;color:#3A539B;font-weight:bold;"> Make better contact </h4>
+		</div>
+		<div>
+			<div class="container">
+			 <div class="row">
+    <div class="col-12 ">
+		<table class="table table-image table-responsive border-primary table-striped " style=" box-shadow: #888888 0px 7px 29px 0px;">
+		  <thead class="thead-primary"> 
+		    <tr>
+		      			<th scope="col">Pal ID</th>
+						<th scope="col">Name</th>
+						<th scope="col">Nick Name</th>
+						<th scope="col">Birthday</th>
+						<th scope="col">Religion</th>
+						<th scope="col">Likes</th>
+						<th scope="col">Dislikes</th>
+						<th scope="col">Personality Type</th>
+						<th scope="col">Profession</th>
+						<th scope="col">Main point of Connection</th>
+						<th scope="col">Fights/Arguments</th>
+						<th scope="col">Reasons for Arguments/Fights</th>
+						<th scope="col">Resolution</th>
+						<th scope="col">Length of Friendship</th>
+						<th scope="col">Do you help them</th>
+						<th scope="col">Last Contacted</th>
+						<th scope="col">Number of days since contact</th>
+						<th scope="col">Picture</th>
+						<th scope="col">Edit</th>
+						<th scope="col">Delete</th>
+						
+		    </tr>
+		  </thead>
+		  <tbody>
+		   <tr th:each="pals:${listAllPals}">
+		      <td th:text="${pals.myp_id}" scope="row"></td>
+		      <td th:text="${pals.name}"></td>
+						<td th:text="${pals.nickName}"></td>
+						<td th:text="${pals.birthday}"></td>
+						<td th:text="${pals.religion}"></td>
+						<td th:text="${pals.likes}"></td>
+						<td th:text="${pals.dislikes}"></td>
+						<td th:text="${pals.personalityType}"></td>
+						<td th:text="${pals.profession}"></td>
+						<td th:text="${pals.mainPOfConnection}"></td>
+						<td th:text="${pals.argOrFights}"></td>
+						<td th:text="${pals.reasonForArgOrFights}"></td>
+						<td th:text="${pals.resolution}"></td>
+						<td th:text="${pals.lenOfFriendship}"></td>
+						<td th:text="${pals.doYouHelpThem}"></td>
+						<td th:text="${pals.lastContacted}">
+						</td>
+						<td th:text="${pals.DaysSinceContact}" class="text-danger font-weight-bold">
+						</td>
+		      
+		      <td class="w-25">
+			      <img th:src="@{${pals.PhotosImagePath}}" class="img-fluid pics"/>
+			   <!-- /* <img th:src="@{${pals.PhotosImagePath}}" class="img-fluid img-thumbnail"/>*/ -->    
+		      </td>
+		       <td>
+                                    <a th:href="@{/edit/{id}(id=${pals.myp_id})}"
+                                             class="btn btn-success">
+                                        <i class="fas fa-user-edit ml-2"></i>
+                                    </a></td>
+                                &nbsp;&nbsp;&nbsp;
+              <!-- /* <a th:href="@{/delete/{id}(id=${pals.myp_id})}" class="actionLinks btn btn-danger">Delete</a>
+              <td><a th:href="@{/edit/{id}(id=${pals.myp_id})}" class="actionLinks btn btn-success">Edit</a></td>
+              */ -->
+             
+             <td><a th:href="@{/delete/{id}(id=${pals.myp_id})}"
+                                              class="btn btn-danger">
+                                        <i class="fas fa-user-times ml-2"></i></a></td>
+		    </tr>
+		  </tbody>
+		</table>   
+    </div>
+  </div>
+  
+  
+		</div>
+	</div>
+</div>
+</body>
+</html>
+
